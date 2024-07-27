@@ -411,6 +411,24 @@ impl RandomXVM {
         }
     }
 
+    pub fn randomx_calculate_hash_first(&self, input: *const c_void, input_size: usize) {
+        unsafe {
+            randomx_calculate_hash_first(self.vm, input, input_size)
+        }
+    }
+
+    pub fn randomx_calculate_hash_next(&self, input_next: *const c_void, input_size_next: usize, output: *mut c_void) {
+        unsafe {
+            randomx_calculate_hash_next(self.vm, input_next, input_size_next, output)
+        }
+    }
+
+    pub fn randomx_calculate_hash_last(&self, output: *mut c_void) {
+        unsafe {
+            randomx_calculate_hash_last(self.vm, output)
+        }
+    }
+
     /// Calculates hashes from a set of inputs.
     ///
     /// `input` is an array of a sequence of u8 to be hashed.
